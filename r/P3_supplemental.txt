@@ -1,21 +1,63 @@
-
 ######################
 # Supplemental Questions #
 ######################
 
 
 Answer the supplemental questions here! Make sure you follow the format if it is asked
-Q1#######################
-QS1.1: 
 
-QS1.2:
+Q1#######################
+
+QS1.1: 
+In the computeActionFromValues(state) method, we iterate over all possible actions available in the given state, 
+computing the Q-value for each action using the computeQValueFromValues(state, action) method. The method then selects and 
+returns the action that yields the maximum Q-value. If no actions are available (as in terminal states), it returns None. 
+This ensures that the agent always chooses the optimal action based on the current value function.
+
+QS1.2: 
+The computeQValueFromValues(state, action) method calculates the expected value of taking a specific action in a 
+given state by summing over all possible next states. For each next state, it multiplies the transition probability by the sum of the 
+immediate reward and the discounted value of that next state (i.e., reward + discount * value). This implementation adheres to the Bellman 
+equation and is essential for correctly updating the value estimates during value iteration.
 
 Q3#######################
+QS3.1:
+For question3a, we set a low discount (0.1), zero noise, and a negative living reward (-1). 
+This makes the agent impatient and encourages it to go straight for the close exit (+1), even though it risks the cliff (-10). 
+The low discount means it doesn’t value future rewards heavily, and the negative living reward pushes it to exit quickly.
 
-QS3.1: 
+For question3b, we keep the discount at 0.1 but introduce some noise (0.1). Now the agent is still interested in the close exit, 
+but the added noise discourages hugging the cliff. The negative living reward remains the same, so it still wants to finish quickly.
+
+For question3c, we switch to a higher discount (0.9), zero noise, and the same negative living reward (-1). A higher discount lets 
+the agent value the distant exit (+10) more than the nearer +1. With no noise, the agent can afford to take the quicker (riskier) 
+path without worrying about random moves.
+
+For question3d, we keep the high discount at 0.9 but increase the noise to 0.2, while using a 
+neutral living reward (0). The agent still wants the distant exit but is now encouraged to avoid the cliff because of the 
+increased risk from noise. A neutral living reward means it doesn’t lose or gain per step, so it won’t rush as much and will take a safer route.
+
+Finally, for question3e, we set the discount to 0.9, noise to 0.0, and a positive living reward (1). 
+This makes it so beneficial to keep moving that the agent never terminates. Even the large exit reward can’t 
+match the ongoing gains from the living reward.
+
+
 Q5#######################
 
 QS5.1:
+We implemented our Q-learning agent so that it learns from experience by updating
+its Q-values after each transition (s, a, s{\prime}, \text{reward}).
+	1.	Storing Q-values: We use a dictionary (or util.Counter) keyed by (\text{state}, \text{action}). 
+        Any unseen (s, a) pair defaults to a Q-value of 0.
+	2.	getQValue: Returns the stored Q-value for a given (s, a). If it’s not in the dictionary, 
+        it defaults to 0.
+	3.	computeValueFromQValues: For a state s, we compute \max_{a} Q(s, a) over all legal actions a. 
+        If s has no legal actions, return 0.0.
+	4.	computeActionFromQValues: For a state s, we pick the action that yields the highest Q-value. 
+        If multiple actions tie, we choose randomly among them. If there are no legal actions, return None.
+	5.	getAction: We use an \epsilon-greedy policy. With probability \epsilon, we pick a random action 
+        from the legal actions; otherwise, we call computeActionFromQValues for a greedy choice.
+	6.	update: After observing a transition (s, a, s{\prime}, \text{reward}), we update our Q-values using
+        Q(s,a) <- (1 - alpha)*Q(s,a) + alpha*(reward + gamma * max_{a'} Q(s', a'))
 
 QS5.2 [optional]:
 
@@ -30,3 +72,4 @@ QS7.1
 
 
 
+</file>
