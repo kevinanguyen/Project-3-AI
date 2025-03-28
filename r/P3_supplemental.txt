@@ -59,17 +59,27 @@ its Q-values after each transition (s, a, s{\prime}, \text{reward}).
 	6.	update: After observing a transition (s, a, s{\prime}, \text{reward}), we update our Q-values using
         Q(s,a) <- (1 - alpha)*Q(s,a) + alpha*(reward + gamma * max_{a'} Q(s', a'))
 
-QS5.2 [optional]:
+QS5.2 [optional]:  try noise =0.2 and submit the screenshot of your result. Compare and Analyze the result with no noise case 
+scenario. You have to mention the name of the screenshot file name in Q5.2. Otherwise we cannot look for your answers.
+When we run the scenario with noise, we can notice that sometimes our moves dont take us to where we expect to go. As shown in the screenshot, when we 
+attempted to go east, we ended up in the same state, this never happens with no noise.
 
 Q6#######################
 QS6.1:
-QS6.2 [optional]:
+You can also observe the following simulations for different epsilon values. Does that behavior of the agent match what 
+you expect? Explain. Add your answer to P3_supplement.txt
+Yes the behavior matches what we expect, because we see that with low exploration only the optimal path is explored the most,
+but with higher exploration, we basically have all q-values non-zero. 
 
 
 Q7#######################
 QS7.1
+Is there an epsilon and a learning rate for which it is highly likely (greater than 99%) that the optimal policy will be 
+learned after 50 iterations?  Your answer is EITHER a 2-item tuple of (epsilon, learning rate) OR the string 'NOT POSSIBLE' 
+if there is none. Epsilon is controlled by -e, learning rate by -l. Put your answer in analysis.py as the return value of question8() 
+(this numbering is from an older version of the project, sorry for the confusion).
 
-
+check analysis.py, NOT POSSIBLE, there 
 
 
 </file>
