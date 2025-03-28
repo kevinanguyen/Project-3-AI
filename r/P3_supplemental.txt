@@ -63,6 +63,17 @@ QS5.2 [optional]:
 
 Q6#######################
 QS6.1:
+Our Q-learning agent implements epsilon-greedy action selection in the getAction method. When we run the agent with a lower epsilon 
+(e.g., 0.1 using “python gridworld.py -a q -k 100 --noise 0.0 -e 0.1”), the agent mostly exploits the best-known actions based on its Q-values. 
+This causes it to follow a relatively stable and optimal path, with only occasional random moves. The resulting Q-values tend to closely resemble 
+those of the value iteration agent along the well-traveled paths, and the average return is relatively high.
+
+In contrast, when we run the agent with a high epsilon (e.g., 0.9 using “python gridworld.py -a q -k 100 --noise 0.0 -e 0.9”), 
+the agent takes random actions 90% of the time. This leads to much more exploration, resulting in more variable paths and generally lower 
+average returns during the learning phase, since it frequently deviates from the optimal path. Over many episodes, the behavior with a high epsilon is more erratic 
+and the Q-values reflect the increased uncertainty due to random actions. Overall, these observations are consistent with our expectations: lower epsilon values favor 
+exploitation and stable performance, while higher epsilon values encourage exploration at the cost of short-term returns.
+
 QS6.2 [optional]:
 
 
