@@ -72,10 +72,12 @@ def question3e():
     return answerDiscount, answerNoise, answerLivingReward
 
 def question8():
-    answerEpsilon = None
-    answerLearningRate = None
-    return answerEpsilon, answerLearningRate
-    # If not possible, return 'NOT POSSIBLE'
+    """
+    Returns:
+        Either a 2-item tuple (epsilon, learning rate) for which the optimal policy is learned with >99%
+        probability on BridgeGrid in 50 episodes, or the string 'NOT POSSIBLE' if no such combination exists.
+    """
+    return 'NOT POSSIBLE'
 
 if __name__ == '__main__':
     print('Answers to analysis questions:')
